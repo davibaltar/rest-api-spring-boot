@@ -1,4 +1,5 @@
-# REST API with Spring Boot
+# REST API using Spring Boot
+A REST API developed using Spring Boot with JPA, Hibernate, Maven, TomCat, JUnit and H2 database. The API represents a TODO list. Job is a computer routine which can have depedency's from others jobs and cannot have self-dependency between jobs.
 
 #### Technologies used:
 - **Java SDK:** v13.0.1
