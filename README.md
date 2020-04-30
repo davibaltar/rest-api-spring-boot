@@ -1,4 +1,5 @@
-# Locadora
+# Movie Rental Store
+A REST API that represents a system for movie rental store. The repository also contains a simple React front.
 
 #### Technologies used:
 - **Java SDK:** v13.0.1
@@ -80,7 +81,7 @@ jdbc:h2:mem:testdb
 
 #### Database diagram
 
-![](https://github.com/davibaltar/test-eteg-fullstack/blob/master/rest-api-spring-boot/diagrama_db.png?raw=true)
+![](https://github.com/davibaltar/rest-api-spring-boot/blob/master/diagrama_db.png?raw=true)
 
 ## Frontend
 The frontend was developed using React + Material UI. The front is not completely finished.
