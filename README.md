@@ -1,5 +1,5 @@
-# Movie Rental Store
-A REST API that represents a system for movie rental store. The repository also contains a simple React front.
+# Video Rental Store
+A REST API that represents a system for video rental store. The repository also contains a simple React front.
 
 #### Technologies used:
 - **Java SDK:** v13.0.1
