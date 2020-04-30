@@ -1,0 +1,459 @@
+{
+	"info": {
+		"_postman_id": "0603a370-0bc3-4424-a6e6-ac33124ce4c4",
+		"name": "Locadora",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/usuarios/signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"cpf\": \"00000000000\",\n\t\"senha\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8088/usuarios/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"usuarios",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/usuarios/signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"cpf\": \"00011100011\",\n\t\"nome\": \"Usuario 1\",\n\t\"dataNascimento\": \"2000-04-20\",\n\t\"senha\": \"admin\",\n\t\"sexo\": {\n\t\t\"tipo\": \"f\"\t\n\t},\n\t\"roles\": [\n        \"ROLE_ADMIN\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8088/usuarios/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"usuarios",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/usuarios/perfil",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMDAwMDAwMDAwMCIsImF1dGgiOlt7ImF1dGhvcml0eSI6IlJPTEVfQURNSU4ifV0sImlhdCI6MTU4Nzk1NTYwNiwiZXhwIjoxNTg3OTU2NTA2fQ.i7yNGJ58_M4j6ebuecxuXgOTiXQuQ0TC4qABED3o-cc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8088/usuarios/perfil",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"usuarios",
+						"perfil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/usuarios",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMDAxMTEwMDAxMSIsImF1dGgiOlt7ImF1dGhvcml0eSI6IlJPTEVfQURNSU4ifV0sImlhdCI6MTU4Nzg3MjczNCwiZXhwIjoxNTg3ODczMDM0fQ.tgZhSN9HIb0Q0BgidW9C6GDlLHOSssXVjwYNYkwclgw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8088/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/usuarios",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"cpf\": \"00011122234\",\n\t\"nome\": \"Usuario 10\",\n\t\"dataNascimento\": \"2020-04-20\",\n\t\"senha\": \"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8088/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/usuarios/{cpf}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOlt7ImF1dGhvcml0eSI6IlJPTEVfQURNSU4ifV0sImlhdCI6MTU4Nzg3MzEwMCwiZXhwIjoxNTg3ODczNDAwfQ.IGZwLuRojFUlCfh2Y1MevmfchrKyTPV028tnGpbMI4s",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8088/usuarios/client",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"usuarios",
+						"client"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/usuarios/{cpf}",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOlt7ImF1dGhvcml0eSI6IlJPTEVfQURNSU4ifV0sImlhdCI6MTU4NzgyNTM1MiwiZXhwIjoxNTg3ODI1NjUyfQ.wgcQzsIQ6yznTgG-t0vA-N8dwiNTA2V-eqCn1U1RFuw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8088/usuarios/00011100011",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"usuarios",
+						"00011100011"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/usuarios/{cpf}",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOlt7ImF1dGhvcml0eSI6IlJPTEVfQURNSU4ifV0sImlhdCI6MTU4NzgzNTEyMSwiZXhwIjoxNTg3ODM1NDIxfQ.MJDbfWWOkHOqw3h_qKkLKa-N8YaLydRgv_YzO8x8ym0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"cpf\": \"00011100012\",\n\t\"nome\": \"Usuario 1 updated2\",\n\t\"dataNascimento\": \"2000-04-22\",\n\t\"senha\": \"12345672\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8088/usuarios/00011100011",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"usuarios",
+						"00011100011"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/filmes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nome\": \"Django Livre2\",\n\t\"quantidade\": 3,\n\t\"genero\": {\n\t\t\"nome\": \"Aventura\"\n\t},\n\t\"diretor\": {\n\t\t\"nome\": \"Quentin Tarantino2\"\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8088/filmes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"filmes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/filmes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8088/filmes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"filmes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/filmes/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8088/filmes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"filmes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/filmes/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8088/filmes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"filmes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/filmes/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMDAxMTEwMDAxMSIsImF1dGgiOlt7ImF1dGhvcml0eSI6IlJPTEVfQURNSU4ifV0sImlhdCI6MTU4Nzg4MDEwNywiZXhwIjoxNTg3ODgwNDA3fQ.ICNWsmEGTzPqpxR_ESW3aLoB7siFGHaX7f-Cr-PhQwE"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nome\": \"Jurassic Park UPDATED\",\n\t\"quantidade\": 3,\n\t\"genero\": {\n\t\t\"nome\": \"Aventura\"\n\t},\n\t\"diretor\": {\n\t\t\"nome\": \"Quentin Tarantino\"\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8088/filmes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"filmes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/locacoes (com filtro)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMDAwMDAwMDAwMCIsImF1dGgiOlt7ImF1dGhvcml0eSI6IlJPTEVfQURNSU4ifV0sImlhdCI6MTU4Nzk1MTQwMiwiZXhwIjoxNTg3OTUyMzAyfQ.W3Ry4g80hLM7VCURDjGO75MWJLGRJrxQHrYmBXxzc0M"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8088/locacoes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"locacoes"
+					],
+					"query": [
+						{
+							"key": "usuarioCPF",
+							"value": "00000000000",
+							"disabled": true
+						},
+						{
+							"key": "filmeNome",
+							"value": "Batman",
+							"disabled": true
+						},
+						{
+							"key": "alugados",
+							"value": "true",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/locacoes",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMDAwMDAwMDAwMCIsImF1dGgiOlt7ImF1dGhvcml0eSI6IlJPTEVfQURNSU4ifV0sImlhdCI6MTU4Nzk0MjM3NywiZXhwIjoxNTg3OTQyNjc3fQ.QxJEVHlAiHyoUc73fkU9ANMXhoqBhmbXyVjk3kDiLAI"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"usuarioId\": 1,\n\t\"filmeId\": 1,\n\t\"dataDevolucao\": \"2020-06-06\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8088/locacoes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"locacoes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/locacoes/renovar/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMDAwMDAwMDAwMCIsImF1dGgiOlt7ImF1dGhvcml0eSI6IlJPTEVfQURNSU4ifV0sImlhdCI6MTU4Nzk0MzQ3MywiZXhwIjoxNTg3OTQzNzczfQ.4oLbPDOpyJIf6twGRTK2Wl8Y9qq2FxeGf5_1ErVxme4"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8088/locacoes/renovar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"locacoes",
+						"renovar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

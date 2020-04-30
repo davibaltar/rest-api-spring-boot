@@ -1,5 +1,4 @@
-# REST API using Spring Boot
-A REST API developed using Spring Boot with JPA, Hibernate, Maven, TomCat, JUnit and H2 database. The API represents a TODO list. Job is a computer routine which can have depedency's from others jobs and cannot have self-dependency between jobs.
+# Locadora
 
 #### Technologies used:
 - **Java SDK:** v13.0.1
@@ -7,54 +6,108 @@ A REST API developed using Spring Boot with JPA, Hibernate, Maven, TomCat, JUnit
 - **SpringToolSuite4:** v4.6.0
 - **Operating System:** macOS Mojave v10.14.6
 
-## Build
+## Contents
+- [Backend](#backend)
+- [Frontend](#frontend)
 
+## Backend
+The development used Spring Boot with JPA, Hibernate, Maven, TomCat, JUnit, H2 database, Swagger documentation and JWT authentication.
+
+### Install
+To install, run the following command at the project root:
+
+```
+mvn install
+```
+
+### Build
 To build the package, run the following command at the project root:
 
 ```
 mvn clean package spring-boot:repackage
 ```
+
 To start the project:
 
 ```
-java -jar target/unisys-test-api-0.0.1-SNAPSHOT.jar
+java -jar target/spring-boot-locadora-api-0.0.1-SNAPSHOT.jar
 ```
 
-## Tests
-To perform automated tests, run the following command at the root of the project:
+### Tests
+The tests check the situations:
+- Add user under 18
+- Add user over 18 years old
+- User with invalid CPF
+- User with valid CPF
+- User to rent a maximum of 5 films at a time
+- A maximum of two renewals
+- Among others
+
+To run the tests, run the following command at the project root:
 
 ```
 mvn test
 ```
 
-## Start
-
-To start the project, run the following command at the root of the project:
+### Start
+To start the project, run the following command at the project root:
 
 ```
 mvn spring-boot:run
 ```
 
-## Endpoints
-Base path: [http://localhost:8080/](http://localhost:8080/)
+### Host, Port and Base Path
+[http://localhost:8088/](http://localhost:8088/)
 
-## Database Access
-The database used was H2. To use the H2 console, access:
+### Swagger Documentation
+To view the API documentation with the details of each endpoints, visit:
 
-[http://localhost:8080/h2-console](http://localhost:8080/h2-console)
+[http://localhost:8088/swagger-ui.html](http://localhost:8088/swagger-ui.html)
 
-and change the **JDBC URL** field to:
+### Database
+The relational database H2 was used. Because it is in-memory, H2 facilitates testing and implementation. To access the H2 console, visit:
+
+[http://localhost:8088/h2-console](http://localhost:8088/h2-console)
+
+Fields:  
+**JDBC URL: ** 
 
 ```
 jdbc:h2:mem:testdb
 ```
+**User name: ** sa  
+**Password: **  
 
-## Notes
+#### Database diagram
 
-1. If the **parentJob** parameter pertaining to *Job* is null or the reference is not found, *Job* will not be added.
+![](https://github.com/davibaltar/test-eteg-fullstack/blob/master/rest-api-spring-boot/diagrama_db.png?raw=true)
 
-2. To comply with the removal of the *Job* according to the documentation, the references to the removed *Job* will also be deleted. In a real environment this could cause instability in the database, but as this is just a test, there will be no problems.
+## Frontend
+The frontend was developed using React + Material UI. The front is not completely finished.
+ 
+[http://localhost:3000](http://localhost:3000)
 
-3. If *Job* is not added because it breaks an insertion rule, an empty *Job* object will be returned, with **id** equal to *null*.
+To install the dependencies, run the following command at the project root:
 
-4. When a *Job* is deleted, its respective *Tasks* are also deleted.
+```
+npm install
+```
+To run the project, run the following command at the project root:
+
+```
+npm start
+```
+
+#### Front images
+
+![](https://github.com/davibaltar/public-store/blob/master/front-locadora-01.png?raw=true)
+
+![](https://github.com/davibaltar/public-store/blob/master/front-locadora-02.png?raw=true)
+
+![](https://github.com/davibaltar/public-store/blob/master/front-locadora-03.png?raw=true)
+
+![](https://github.com/davibaltar/public-store/blob/master/front-locadora-04.png?raw=true)
+
+![](https://github.com/davibaltar/public-store/blob/master/front-locadora-05.png?raw=true)
+
+![](https://github.com/davibaltar/public-store/blob/master/front-locadora-06.png?raw=true)
