@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import AuthService from '../../service/AuthService';
 import InputMask from 'react-input-mask'
+import AlertBox from '../AlertBox'
 
 class LoginComponent extends React.Component {
 
@@ -25,20 +26,28 @@ class LoginComponent extends React.Component {
     }
 
     login = (e) => {
-        e.preventDefault();
-        const credentials = { cpf: this.state.username.split('.').join('').split('-').join(''), senha: this.state.password };
-        AuthService.login(credentials).then(res => {
-            if (res.status === 200) {
-                localStorage.setItem("userInfo", JSON.stringify({ token: res.data, username: "Usuario" })); // Nome do usuario
-                this.props.history.push('/lista-locacoes');
-            } else {
-                this.setState({ message: "Usuario ou Senha inválida!" });
-            }
-        });
+        try {
+            e.preventDefault();
+            const credentials = { cpf: this.state.username.split('.').join('').split('-').join(''), senha: this.state.password };
+            AuthService.login(credentials).then(res => {
+                if (res.status === 200) {
+                    localStorage.setItem("userInfo", JSON.stringify({ token: res.data, username: "Usuario" })); // Nome do usuario
+                    this.props.history.push('/lista-locacoes');
+                } else {
+                    this.setState({ message: "Usuario ou Senha inválida!" });
+                }
+            });
+        } catch (err) {
+            this.setState({ message: "Erro no servidor. Tente mais tarde!" });
+        }
     };
 
     onChange = (e) =>
         this.setState({ [e.target.name]: e.target.value });
+    
+    closeMsg = () => {
+        this.setState({message: ''})
+    }
 
     render() {
 
@@ -54,7 +63,6 @@ class LoginComponent extends React.Component {
                 <Container maxWidth="sm">
                     <Typography variant="h4" style={styles.center}>Login</Typography>
                     <form>
-                        <Typography variant="h4" style={styles.notification}>{this.state.message}</Typography>
                         {/* <TextField type="text" label="CPF" fullWidth margin="normal" name="username" value={this.state.username} onChange={this.onChange} /> */}
                         <InputMask
                             mask="999.999.999-99"
@@ -63,15 +71,17 @@ class LoginComponent extends React.Component {
                         >
                             {() => <TextField type="text" label="CPF" fullWidth margin="normal" name="username" />}
                         </InputMask>
-
                         <TextField type="password" label="SENHA" fullWidth margin="normal" name="password" value={this.state.password} onChange={this.onChange} />
-
-                        <Button variant="contained" color="secondary" onClick={this.login}>Login</Button>
+                        <Button style={{marginTop: 20}} variant="contained" color="secondary" onClick={this.login}>Login</Button>
                     </form>
+                    <AlertBox message={this.state.message} type={'error'} close={this.closeMsg} />
                 </Container>
                 <Typography variant="h4" style={styles.userTitle}>USUARIO PARA TESTE</Typography>
                 <Typography variant="h4" style={styles.user}>CPF: 000.000.000-00 </Typography>
                 <Typography variant="h4" style={styles.user}>SENHA: 123456 </Typography>
+
+
+
             </React.Fragment>
         )
     }
@@ -91,14 +101,14 @@ const styles = {
     user: {
         display: 'flex',
         justifyContent: 'center',
-        color: 'red',
+        color: '#b36161',
         fontSize: 14,
         paddingTop: 5
     },
     userTitle: {
         display: 'flex',
         justifyContent: 'center',
-        color: 'red',
+        color: '#b36161',
         fontSize: 14,
         marginTop: 100
     }

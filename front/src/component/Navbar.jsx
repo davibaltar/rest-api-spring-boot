@@ -22,7 +22,7 @@ const NavBar = () => {
                 <Toolbar>
                     <Typography variant="h6" style={style}>
                         Locadora
-                        </Typography>
+                    </Typography>
                     {/* <Button color="inherit">{AuthService.getUserInfo().username}</Button> */}
                     <Button color="inherit" component={Link} to="/lista-locacoes">Locações</Button>
                     <Button color="inherit" component={Link} to="/lista-filmes">Filmes</Button>
