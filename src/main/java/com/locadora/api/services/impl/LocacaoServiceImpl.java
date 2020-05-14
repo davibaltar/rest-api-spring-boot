@@ -87,10 +87,12 @@ public class LocacaoServiceImpl implements LocacaoService {
 
 	@Override
 	public Locacao search(Integer id) {
-		Optional<Locacao> locacao = locacaoRepository.findById(id);
-		if (locacao.isEmpty())
-			throw new CustomException("locacao nao existe", HttpStatus.NOT_FOUND);
-		return locacao.get();
+		try {
+			Optional<Locacao> locacao = locacaoRepository.findById(id);
+			return locacao.get();
+		} catch (Exception e) {
+			throw new CustomException("Locacao nao existe", HttpStatus.NOT_FOUND);
+		}
 	}
 
 	@Override

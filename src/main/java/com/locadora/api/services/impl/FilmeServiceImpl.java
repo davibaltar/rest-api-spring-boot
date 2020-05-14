@@ -57,18 +57,19 @@ public class FilmeServiceImpl implements FilmeService {
 
 	@Override
 	public Filme search(Integer id) {
-		Optional<Filme> filme = filmeRepository.findById(id);
-		if (filme.isEmpty())
-			throw new CustomException("Filme nao existe", HttpStatus.NOT_FOUND);
-		return filme.get();
+		try {
+			Optional<Filme> filme = filmeRepository.findById(id);
+			return filme.get();
+		} catch (Exception e) {
+			throw new CustomException("Filme nao encontrado", HttpStatus.NOT_FOUND);
+		}
 	}
 
 	@Override
 	public Filme update(Integer id, Filme filme) {
-		Optional<Filme> filmeFound = filmeRepository.findById(id);
-		if (filmeFound.isEmpty()) {
-			throw new CustomException("Filme nao encontrado.", HttpStatus.NOT_FOUND);
-		} else {
+		try {
+			Optional<Filme> filmeFound = filmeRepository.findById(id);
+
 			Filme filmeToUpdate = filmeFound.get();
 			if (filme.getNome() != null)
 				filmeToUpdate.setNome(filme.getNome());
@@ -90,6 +91,8 @@ public class FilmeServiceImpl implements FilmeService {
 			}
 
 			return filmeRepository.save(filmeToUpdate);
+		} catch (Exception e) {
+			throw new CustomException("Filme nao encontrado.", HttpStatus.NOT_FOUND);
 		}
 
 	}
