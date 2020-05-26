@@ -11,6 +11,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import NavBar from "../Navbar";
+import AuthService from '../../service/AuthService';
 
 class ListUsuarioComponent extends Component {
 
@@ -28,6 +29,8 @@ class ListUsuarioComponent extends Component {
     }
 
     componentDidMount() {
+        if (!AuthService.getUserInfo())
+            this.props.history.push('/login');
         this.reloadUserList();
     }
 

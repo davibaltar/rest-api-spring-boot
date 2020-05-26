@@ -11,6 +11,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import AuthService from '../../service/AuthService';
 
 class AddUsuarioComponent extends Component {
 
@@ -26,8 +27,11 @@ class AddUsuarioComponent extends Component {
             message: null
         }
         this.saveUsuario = this.saveUsuario.bind(this);
+    }
 
-
+    componentDidMount() {
+        if (!AuthService.getUserInfo())
+            this.props.history.push('/login');
     }
 
     saveUsuario = (e) => {

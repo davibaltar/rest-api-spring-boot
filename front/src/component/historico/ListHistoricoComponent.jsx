@@ -7,6 +7,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import NavBar from "../Navbar";
+import AuthService from '../../service/AuthService';
 
 class ListHistoricoComponent extends Component {
 
@@ -21,6 +22,8 @@ class ListHistoricoComponent extends Component {
     }
 
     componentDidMount() {
+        if (!AuthService.getUserInfo())
+            this.props.history.push('/login');
         this.reloadLocacaoList();
     }
 

@@ -14,6 +14,10 @@ import EditUserComponent from "./usuario/EditUserComponent";
 
 import ListHistoricoComponent from "./historico/ListHistoricoComponent";
 
+import MainPage from "./MainPage";
+import Profile from "./Profile";
+import NotFound from "./NotFound";
+
 import React from "react";
 import LoginComponent from "./usuario/LoginComponent";
 
@@ -21,8 +25,10 @@ const AppRouter = () => {
     return (
         <Router>
             <Switch>
-                <Route path="/" exact component={LoginComponent} />
-
+                <Route path="/" exact component={MainPage} />
+                <Route path="/login" exact component={LoginComponent} />
+                <Route path="/perfil" exact component={Profile} />
+                
                 <Route path="/lista-filmes" component={ListFilmeComponent} />
                 <Route path="/add-filme" component={AddFilmeComponent} />
                 <Route path="/editar-filme" component={EditFilmeComponent} />
@@ -36,6 +42,9 @@ const AppRouter = () => {
                 <Route path="/editar-usuario" component={EditUserComponent} />
 
                 <Route path="/lista-historico" component={ListHistoricoComponent} />
+
+                <Route path="/notfound" exact component={NotFound} />
+                <Route path='*' exact={true} component={NotFound} />
 
             </Switch>
         </Router>

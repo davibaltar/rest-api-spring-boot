@@ -11,6 +11,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import NavBar from "../Navbar";
+import AuthService from '../../service/AuthService';
 
 class ListUsuarioComponent extends Component {
 
@@ -28,18 +29,19 @@ class ListUsuarioComponent extends Component {
     }
 
     componentDidMount() {
+        if (!AuthService.getUserInfo())
+            this.props.history.push('/login');
         this.reloadUsuarioList();
     }
 
     reloadUsuarioList() {
         UsuarioService.fetchUsuarios()
             .then((res) => {
-                // this.props.history.push('/lista-filmes');
                 this.setState({ usuarios: res.data })
             }, err => {
                 let statusCode = err.toString().split('status code ')[1].split(' ')[0]
-                if (statusCode === '500')
-                    this.props.history.push('/');
+                if (statusCode === '403' || statusCode === '500')
+                    this.props.history.push('/login');
                 else
                     this.setState({ message: 'Erro ao recarregar lista de usuários' });
             });

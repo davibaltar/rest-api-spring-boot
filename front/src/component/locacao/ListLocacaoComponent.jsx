@@ -10,6 +10,7 @@ import AddIcon from '@material-ui/icons/Add';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import NavBar from "../Navbar";
+import AuthService from '../../service/AuthService';
 
 class ListLocacaoComponent extends Component {
 
@@ -28,6 +29,8 @@ class ListLocacaoComponent extends Component {
     }
 
     componentDidMount() {
+        if (!AuthService.getUserInfo())
+            this.props.history.push('/login');
         this.reloadLocacaoList();
     }
 
@@ -62,11 +65,13 @@ class ListLocacaoComponent extends Component {
         LocacaoService.renovarLocacao(locacaoId)
             .then(res => {
                 this.setState({ message: 'Locacao renovada com sucesso.' });
-                this.setState({ locacoes: this.state.locacoes.map(locacao => { 
-                    if(locacao.id === locacaoId)
-                        locacao.renovacoes += 1
-                    return locacao
-                })});
+                this.setState({
+                    locacoes: this.state.locacoes.map(locacao => {
+                        if (locacao.id === locacaoId)
+                            locacao.renovacoes += 1
+                        return locacao
+                    })
+                });
 
                 this.props.history.push('/lista-locacoes');
             }, err => {

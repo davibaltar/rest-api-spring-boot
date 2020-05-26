@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import NavBar from "../Navbar";
 import InputMask from 'react-input-mask'
+import AuthService from '../../service/AuthService';
 
 class AddLocacaoComponent extends Component {
 
@@ -18,6 +19,11 @@ class AddLocacaoComponent extends Component {
             message: null
         }
         this.saveLocacao = this.saveLocacao.bind(this);
+    }
+
+    componentDidMount() {
+        if (!AuthService.getUserInfo())
+            this.props.history.push('/login');
     }
 
     saveLocacao = (e) => {

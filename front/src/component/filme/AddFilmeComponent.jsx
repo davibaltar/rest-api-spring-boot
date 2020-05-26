@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import NavBar from "../Navbar";
+import AuthService from '../../service/AuthService';
 
 class AddUsuarioComponent extends Component {
 
@@ -18,6 +19,11 @@ class AddUsuarioComponent extends Component {
             message: null
         }
         this.saveUser = this.saveUser.bind(this);
+    }
+
+    componentDidMount() {
+        if (!AuthService.getUserInfo())
+            this.props.history.push('/login');
     }
 
     saveUser = (e) => {
